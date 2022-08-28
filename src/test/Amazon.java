@@ -22,11 +22,13 @@ public class Amazon {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
 		
-		//Enter 'Samsung' in the search box and press ENTER key.
+		//Enter 'Samsung' in the search box and click on go button.
 		//Store the Products and its prize in List collection
 		//Print the count in the console.
 		WebElement search=driver.findElement(By.id("twotabsearchtextbox"));
-		search.sendKeys("Samsung",Keys.ENTER);
+		search.sendKeys("Samsung");
+		WebElement go=driver.findElement(By.xpath("//input[@type='submit']"));
+		go.click();
 		List<WebElement>products=driver.findElements(By.xpath("//div[@data-component-type='s-search-result']//span[starts-with(text(),'Samsung')]"));
 		List<WebElement>prize=driver.findElements(By.xpath("//div[@data-component-type='s-search-result']//span[@class='a-price-whole']"));
 		System.out.println("No of products is "+ products.size());
